@@ -1,11 +1,19 @@
 'use client';
 
+import React, {useState} from 'react';
 import {Player} from '@remotion/player';
+import {z} from 'zod';
 
-import {SpotlightNewSponsor} from '../../../../remotion/compositions/templates/sponsor/spotlightNewSponsor/SpotlightNewSponsor';
+import {
+	FormSchema,
+	SpotlightNewSponsor,
+} from '../../../../remotion/compositions/templates/sponsor/spotlightNewSponsor/SpotlightNewSponsor';
 import {Code} from '../../../../src/app/Code';
 import {ResizeWrapper} from '../../../../src/app/components/sidebar/ResizeWrapper';
 import {Sidebar} from '../../../../src/app/components/sidebar/Sidebar';
+import AutoForm, {
+	AutoFormSubmit,
+} from '../../../../src/app/forms/autoForm/AutoForm';
 import {Form, FormConfigProps} from '../../../../src/app/forms/Form';
 import {Input} from '../../../../src/app/forms/input';
 import {useInputChange} from '../../../../src/app/hooks/useInputChange';
@@ -22,6 +30,9 @@ export default function SpotlightNewSponsorPage() {
 		'https://github.com/lyonjs/shortvid.io/assets/60877626/a4155bda-d6b1-4e2b-8631-6450ef3bf768',
 		'sponsorLogo',
 	);
+	const [values, setValues] = useState<Partial<z.infer<typeof FormSchema>>>({});
+
+	console.log('values', values);
 
 	const props = {logo, sponsorLogo};
 	const encodedParams = encodeObjectValues(props);
@@ -69,7 +80,14 @@ export default function SpotlightNewSponsorPage() {
 
 			<ResizeWrapper resizableSide="left">
 				<Sidebar>
-					<Form formConfig={formConfig} encodedParams={encodedParams} />
+					{/*<Form formConfig={formConfig} encodedParams={encodedParams} />*/}
+					<AutoForm
+						formSchema={FormSchema}
+						values={values}
+						onValuesChange={setValues}
+					>
+						<AutoFormSubmit>Send now</AutoFormSubmit>
+					</AutoForm>
 				</Sidebar>
 			</ResizeWrapper>
 		</>

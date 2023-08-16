@@ -1,3 +1,4 @@
+import React from 'react';
 import {Lottie} from '@remotion/lottie';
 import {
 	AbsoluteFill,
@@ -9,6 +10,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {z} from 'zod';
 
 import {FadeIn} from '../../../../design/animations/FadeIn';
 import {BackgroundCircleNoise} from '../../../../design/atoms/BackgroundCircleNoise';
@@ -18,10 +20,12 @@ import {LogosSponsoring} from './LogosSponsoring';
 import {NewSponsorTitle} from './NewSponsorTitle';
 import {Spotlight} from './Spotlight';
 
-export type SpotlightNewSponsornProps = {
-	logo: string;
-	sponsorLogo: string;
-};
+export const FormSchema = z.object({
+	logo: z.string().optional(),
+	sponsorLogo: z.string().optional(),
+});
+
+export type SpotlightNewSponsornProps = z.infer<typeof FormSchema>;
 
 export const SpotlightNewSponsor: React.FC<SpotlightNewSponsornProps> = ({
 	logo,
