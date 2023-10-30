@@ -11,9 +11,8 @@ import {
 import {Code} from '../../../../src/app/Code';
 import {ResizeWrapper} from '../../../../src/app/components/sidebar/ResizeWrapper';
 import {Sidebar} from '../../../../src/app/components/sidebar/Sidebar';
-import AutoForm, {
-	AutoFormSubmit,
-} from '../../../../src/app/forms/autoForm/AutoForm';
+import AutoForm from '../../../../src/app/forms/autoForm/AutoForm';
+import {AutoFormSubmit} from '../../../../src/app/forms/autoForm/AutoFormSubmit';
 import {Form, FormConfigProps} from '../../../../src/app/forms/Form';
 import {Input} from '../../../../src/app/forms/input';
 import {useInputChange} from '../../../../src/app/hooks/useInputChange';

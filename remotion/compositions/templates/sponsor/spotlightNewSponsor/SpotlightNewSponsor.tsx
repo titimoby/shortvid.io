@@ -23,6 +23,7 @@ import {Spotlight} from './Spotlight';
 export const FormSchema = z.object({
 	logo: z.string().optional(),
 	sponsorLogo: z.string().optional(),
+	test: z.boolean().optional(),
 });
 
 export type SpotlightNewSponsornProps = z.infer<typeof FormSchema>;
